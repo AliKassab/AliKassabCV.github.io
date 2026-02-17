@@ -69,7 +69,7 @@ const cardObserverOptions = {
 const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            const cardIndex = parseInt(entry.target.getAttribute('data-card-index'), 10);
+            const cardIndex = parseInt(entry.target.getAttribute('data-card-index') || '0', 10);
             setTimeout(() => {
                 entry.target.classList.add('visible');
             }, cardIndex * 100);
