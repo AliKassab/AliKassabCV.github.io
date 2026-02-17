@@ -1,81 +1,91 @@
-// ===== CONFIG =====
-const SCROLL_COOLDOWN_MS = 800;
+// ===== SMOOTH SCROLL FOR NAVIGATION =====
+const navLinks = document.querySelectorAll('.header-nav a');
 
-// ===== SECTION SNAP LOGIC =====
-const sections = Array.from(document.querySelectorAll(".section"));
-let currentIndex = 0;
-let isScrolling = false;
-
-function scrollToSection(index) {
-    if (index < 0 || index >= sections.length) return;
-
-    isScrolling = true;
-    currentIndex = index;
-
-    sections[index].scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
+});
 
-    setTimeout(() => {
-        isScrolling = false;
-    }, SCROLL_COOLDOWN_MS);
-}
+// ===== HEADER BACKGROUND ON SCROLL =====
+const header = document.querySelector('.header');
 
-// Mouse wheel control
-window.addEventListener("wheel", (e) => {
-    if (isScrolling) return;
-
-    if (e.deltaY > 0) {
-        scrollToSection(currentIndex + 1);
-    } else if (e.deltaY < 0) {
-        scrollToSection(currentIndex - 1);
-    }
-}, { passive: true });
-
-// Keyboard navigation
-window.addEventListener("keydown", (e) => {
-    if (isScrolling) return;
-
-    if (e.key === "ArrowDown" || e.key === "PageDown") {
-        scrollToSection(currentIndex + 1);
-    }
-
-    if (e.key === "ArrowUp" || e.key === "PageUp") {
-        scrollToSection(currentIndex - 1);
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
 });
 
-// ===== NAV HIGHLIGHT =====
-const navLinks = document.querySelectorAll(".nav a");
+// ===== ACTIVE NAVIGATION HIGHLIGHTING =====
+const sections = document.querySelectorAll('.section, .hero');
 
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.id;
-                navLinks.forEach(link => {
-                    link.classList.toggle(
-                        "active",
-                        link.getAttribute("href") === `#${id}`
-                    );
-                });
+const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '-100px 0px -66% 0px'
+};
 
-                currentIndex = sections.indexOf(entry.target);
-            }
-        });
-    },
-    {
-        threshold: 0.6
-    }
-);
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}, observerOptions);
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(section => {
+    navObserver.observe(section);
+});
 
-// ===== NAV CLICK OVERRIDE =====
-navLinks.forEach((link, index) => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        scrollToSection(index);
+// ===== INTERSECTION OBSERVER FOR PROJECT CARDS =====
+const projectCards = document.querySelectorAll('.project-card');
+
+const cardObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px'
+};
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, index * 100);
+        }
+    });
+}, cardObserverOptions);
+
+projectCards.forEach(card => {
+    cardObserver.observe(card);
+});
+
+// ===== PROJECT CARD CLICK HANDLERS =====
+projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const project = card.getAttribute('data-project');
+        // Prepared for future linking to project details
+        console.log(`Clicked on project: ${project}`);
+        // Future implementation: window.location.href = `/projects/${project}`;
+    });
+    
+    // Add hover effect enhancement
+    card.addEventListener('mouseenter', () => {
+        card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
     });
 });

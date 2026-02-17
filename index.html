@@ -8,75 +8,112 @@
 </head>
 <body>
 
-<nav class="nav">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-</nav>
+<!-- Header Navigation -->
+<header class="header">
+    <div class="header-logo">ALI KASSAB</div>
+    <nav class="header-nav">
+        <a href="#home">HOME</a>
+        <a href="#works">WORKS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+</header>
 
-<main>
-
-<section id="home" class="section">
-    <h1>ALI KASSAB</h1>
-    <p>GAME PROGRAMMER</p>
-</section>
-
-<section id="projects" class="section">
-    <h2>Projects</h2>
-
-    <div class="entry">
-        <h3>Mystic Sands</h3>
-        <p>Narrative adventure with procedural maze regeneration and AI systems.</p>
-        <span>Unity · C#</span>
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">ALI KASSAB</h1>
+        <p class="hero-subtitle">GAME PROGRAMMER</p>
+        <p class="hero-description">Creating immersive experiences through code</p>
     </div>
-
-    <div class="entry">
-        <h3>The Recurrent</h3>
-        <p>Horror escape room with looping structures and telepathy mechanics.</p>
-        <span>Unity · C#</span>
-    </div>
-
-    <div class="entry">
-        <h3>Sacrifice</h3>
-        <p>Fast-paced spaceship shooter with modular combat systems.</p>
-        <span>Unity · C#</span>
+    <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
     </div>
 </section>
 
-<section id="about" class="section">
-    <h2>About</h2>
-    <p class="wide">
-        Game programmer focused on gameplay systems, architecture,
-        and performance. Drawn to immersive, atmospheric,
-        story-driven experiences.
-    </p>
-</section>
-
-<section id="experience" class="section">
-    <h2>Experience</h2>
-
-    <div class="entry">
-        <h3>Mega Cat Studios</h3>
-        <p>Unity Game Developer working on core systems, optimization, and UI.</p>
+<!-- Projects Section -->
+<section id="works" class="section">
+    <div class="container">
+        <h2 class="section-title">WORKS</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-project="mystic-sands">
+                <div class="project-image">
+                    <h3 class="project-image-title">Mystic Sands</h3>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Mystic Sands</h3>
+                    <p class="project-description">Narrative adventure with procedural maze regeneration and AI systems.</p>
+                    <span class="project-tech">Unity · C#</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="the-recurrent">
+                <div class="project-image">
+                    <h3 class="project-image-title">The Recurrent</h3>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">The Recurrent</h3>
+                    <p class="project-description">Horror escape room with looping structures and telepathy mechanics.</p>
+                    <span class="project-tech">Unity · C#</span>
+                </div>
+            </div>
+            
+            <div class="project-card" data-project="sacrifice">
+                <div class="project-image">
+                    <h3 class="project-image-title">Sacrifice</h3>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Sacrifice</h3>
+                    <p class="project-description">Fast-paced spaceship shooter with modular combat systems.</p>
+                    <span class="project-tech">Unity · C#</span>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="entry">
-        <h3>Genesis Creations</h3>
-        <p>Junior Game Programmer focusing on gameplay, VR, and multiplayer systems.</p>
+<!-- About Section -->
+<section id="about" class="section about-section">
+    <div class="container">
+        <h2 class="section-title">ABOUT</h2>
+        <p class="about-intro">
+            Game programmer focused on gameplay systems, architecture,
+            and performance. Drawn to immersive, atmospheric,
+            story-driven experiences.
+        </p>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3>Mega Cat Studios</h3>
+                <p class="experience-role">Unity Game Developer</p>
+                <p class="experience-description">Working on core systems, optimization, and UI.</p>
+            </div>
+            <div class="experience-card">
+                <h3>Genesis Creations</h3>
+                <p class="experience-role">Junior Game Programmer</p>
+                <p class="experience-description">Focusing on gameplay, VR, and multiplayer systems.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>
-        <a href="mailto:ali.mohammed.kassab@gmail.com">ali.mohammed.kassab@gmail.com</a><br/>
-        <a href="https://github.com/AliKassab" target="_blank">GitHub</a>
-    </p>
+<!-- Contact Section -->
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <h2 class="section-title">CONTACT</h2>
+        <div class="contact-links">
+            <a href="mailto:ali.mohammed.kassab@gmail.com" class="contact-button">EMAIL</a>
+            <a href="https://github.com/AliKassab" target="_blank" class="contact-button">GITHUB</a>
+        </div>
+    </div>
 </section>
 
-</main>
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2026 Ali Kassab. All rights reserved.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
