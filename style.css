@@ -94,10 +94,24 @@ ul {
     margin: 8px 0 0 18px;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-row {
+    display: flex;
+    gap: 12px;
+}
+
+.skill-row strong {
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+.skill-row span {
+    color: #e6e6e6;
 }
 
 strong {
